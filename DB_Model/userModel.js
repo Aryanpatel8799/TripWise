@@ -26,11 +26,12 @@ const userSchema = mongoose.Schema({
         type:String,
         required:[true,'Password is required'],
         minlength:[8,'Password must be at least 8 characters'],
+        select:false
     },  
 })
 
 userSchema.methods.generateAuthToken = function(){
-    const token = jwt.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:'24h'});
+    const token=jwt.sign({_id:this._id},process.env.JWT_SECRET_KEY,{expiresIn:'24h'});
     return token;
 }
 
