@@ -1,6 +1,8 @@
 const userService = require('../Services/userService');
 const {body,validationResult, cookie} = require('express-validator');
 const User = require('../DB_Model/userModel');
+const { models } = require('mongoose');
+const blackListTokenModel = require('../DB_Model/blackListTokenModel');
 
 module.exports.registerUser = async (req,res) => {
   const errors = validationResult(req);
@@ -49,4 +51,19 @@ module.exports.loginUser = async (req,res) => {
   const token=user.generateAuthToken();  
   res.cookie('token', token);
   res.status(200).json({user,token});
+}
+
+module.exports.getProfile = async (req, res) => {
+  res.status(200).json(req.user);
+}
+
+module.exports.logoutUser = async (req, res) => {
+  const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+  if (!token) {
+    return res.status(400).json({ error: "Token not found" });
+  }
+  res.clearCookie('token');
+  const blacklistTokenDoc = new blackListTokenModel({ token });
+  await blacklistTokenDoc.save();
+  res.status(200).json({ message: "Logout Successfully" });
 }
