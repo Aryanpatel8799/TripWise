@@ -1,0 +1,123 @@
+/* BASE HTML ELEMENT MODIFICATIONS */
+fieldset{border:0px;margin:0px;padding:0px;display:block;}
+img{border:0px;}
+
+/* ANCHOR TAGS */
+a.noline:link{text-decoration:none;}
+a.noline:visited{text-decoration:none;}
+
+a.itemLabel{color:black;font-size:10pt;}
+a.itemLabel:link{text-decoration:none;color:black;}
+a.itemLabel:visited{text-decoration:none;color:black;}
+a.itemLabel:hover{text-decoration:underline;}
+
+a.list{color:black;font-size:10pt;text-decoration:none;}
+a.list:link{text-decoration:none;}
+a.list:visited{text-decoration:none;}
+a.list:hover{text-decoration:underline;}
+
+/* FONTS */
+  /* RELATIVE SIZES */
+.black80{font-size:80%;color:black;}
+.black85{font-size:85%;color:black;}
+.black90{font-size:90%;color:black;}
+.black95{font-size:95%;color:black;}
+.black100{font-size:100%;color:black;}
+.black110{font-size:110%;color:black;}
+.black120{font-size:120%;color:black;}
+.black130{font-size:130%;color:black;}
+.black140{font-size:140%;color:black;}
+.black150{font-size:150%;color:black;}
+         
+.white80{font-size:80%;color:white;}
+.white85{font-size:85%;color:white;}
+.white90{font-size:90%;color:white;}
+.white95{font-size:95%;color:white;}
+.white100{font-size:100%;color:white;}
+.white110{font-size:110%;color:white;}
+.white120{font-size:120%;color:white;}
+.white130{font-size:130%;color:white;}
+.white140{font-size:140%;color:white;}
+.white150{font-size:150%;color:white;}
+
+  /* ABSOLUTE SIZES - we need to change these to relative sizes eventually. */
+.fielddata{font-size:10pt; color:#000000;}
+.fielddatabold{font-size:10pt; font-weight: bold; color:#000000;}
+.fielddatasmall{font-size:8pt; color:#000000;}
+table.tiny td{padding:2px;}
+.tiny {font-size: 7.5pt;}
+.code{font-size:10pt;font-family:"courier new",monospaced;}
+
+/* CLASSES USED BY THE REPORTING ENGINE, MAY BE COLOR SPECIFIC */
+.tableheader{font-size: 10pt;font-weight: bold;background: #cccc99;color: #336699;}
+.tabledata{font-size: 10pt;background: #f7f7e7;color: #000000;}
+.tabledata-alt{font-size:10pt;background:#ffffff; color:#000000;}
+.tabledatabold{font-size:10pt; font-weight:bold; background:#f7f7e7; color:#000000;}
+
+table.standardLook th{font-size:10pt;font-weight:bold; color:#000000;padding:2px 3px 2px 3px; white-space:nowrap;vertical-align:bottom;}
+table.standardLook td{font-size:10pt;color: #000000;padding:2px 3px 2px 3px;}
+
+table.default1 th{font-size:10pt; font-weight: bold;background: #cccc99; color: #336699;padding:2px; white-space:nowrap;vertical-align:bottom;}
+table.default1 td{font-size:10pt;background: #f7f7e7;color: #000000;padding:2px;}
+table.default1 td.alt{font-size:10pt;background:#ffffff; color:#000000;}
+
+table.default2 {border-left:1px #cccc99 solid;border-top:1px #cccc99 solid; background:#f7f7e7;font-size:10pt; margin-top:1px;}
+table.default2 th{font-weight: bold;background: #cccc99;color: #336699;padding:2px;border-bottom:1px #f7f7e7 solid; border-right:1px #f7f7e7 solid;font-size:10pt;white-space:nowrap;vertical-align:bottom;}
+table.default2 td{padding:2px;border-bottom:1px #cccc99 solid;border-right:1px #cccc99 solid;font-size:10pt;}
+
+table.default3 th{font-size:8pt;font-weight:bold; color:#000000;}
+table.default3 td{font-size:8pt;color: #000000;}
+
+table.default4 { margin:5px auto 0.5em auto; border-left:1px solid #cccccc; border-top:1px solid #cccccc; border-right:1px solid #999999; border-bottom:1px solid #999999; background-color:#efefef; }
+table.default4 td { border-left:1px solid #ffffff; border-top:1px solid #ffffff; border-right:1px solid #cccccc; border-bottom:1px solid #cccccc; }
+table.default4 th { font-weight:bold;font-size:10pt;color:#ffffff;background-color:#bbbbbb; border-left:1px solid #e0e7f7; border-top:1px solid #e0e7f7; border-right:1px solid #999999; border-bottom:1px solid #999999; white-space:nowrap;vertical-align:bottom;}
+table.default4 td.even { background-color:#fefefe;font-size:10pt;white-space:nowrap;}
+table.default4 td.odd { background-color:#efefef; font-size:10pt;white-space:nowrap;}
+
+table.vertical1 td{font-size:10pt;color: #000000;padding:2px 5px 2px 5px;}
+table.vertical1 td.L{text-align:right;padding-right:6px;}
+table.vertical1 td.R{text-align:left;font-weight:bold;padding-left:3px;}
+table.vertical1 td.vertical1Border{font-size:0pt;height:1px;}
+
+table.vertical2 {border:1px #bbbbbb solid;border-collapse:collapse; background:#ffffff;font-size:10pt; margin-top:1px;}
+table.vertical2 td.L{font-weight: bold;padding:2px;white-space:nowrap;vertical-align:bottom;width:30%;text-align:right;border:1px #bbbbbb solid;background:#999999;color:#ffffff;}
+table.vertical2 td{padding:2px;border:1px #bbbbbb solid;text-align:left;}
+
+/* USED FOR INLINE EDIT IMAGES */
+ img.eLink,a.eLink{border:none;width:7px;height:7px;display:none !important;}
+ img.eLinkOn,a.eLinkOn{border:none;width:7px;height:7px;display:inline !important;}
+
+ul.noIndent{margin:0em;padding-left:1.2em;}
+ul.noIndent li{ padding-left: 0em;}
+    
+div.popupHead{ background-color:#cccccc; padding:4px; border-bottom: 1px #999999 solid;} 
+    
+/* Class(es) to hide html elements that only apply to Section 508 rules */
+.hideMe508{display:none;}
+
+/* styles for developer toolbar */
+#htmldbDevToolbar{font-size:10px;border-left:1px solid #000000;border-right:1px solid #000000;height:18px;background-color:#F7F7E7;border:1px solid #000000;text-align:center;}
+
+a.htmldbToolbar {line-height:14px;font-size:10px;border-top:1px solid #000000; border-bottom:1px solid #000000; background-color:#F7F7E7; color:#811919;text-decoration:none;display:inline-block;padding:2px;padding-left:5px;padding-right:5px;font-weight:bold;}
+a.htmldbToolbar:link{font-size:10px;color:#811919;text-decoration:none;display:inline-block;padding:2px;padding-left:5px;padding-right:5px;font-weight:bold;}
+a.htmldbToolbar:visited{font-size:10px;color:#811919;text-decoration:none;display:inline-block;padding:2px 5px;font-weight:bold;}
+a.htmldbToolbar:hover{font-size:10px;text-decoration:underline;color:#FF0000;background:#C5D5C5;padding:2px 5px;font-weight:bold;}
+
+/* Other */
+span.errTxt{color:#ff0000;font-size:7.5pt;}
+
+div.htmldbDebug{padding-left:3px;font-size:10px !important;}
+
+div.htmldbHtmlEditor{font-size:12px;}
+div.htmldbHtmlEditor p{font-size:inherit;}
+div.htmldbHtmlEditor em{font-style: italic;font-size:12px;}
+
+div.htmldbHtmlEditor h1{font-size:120%}
+div.htmldbHtmlEditor h2{font-size:140%}
+div.htmldbHtmlEditor h3{font-size:160%}
+div.htmldbHtmlEditor h4{font-size:180%}
+div.htmldbHtmlEditor h5{font-size:200%}
+div.htmldbHtmlEditor h6{font-size:220%}
+
+div.htmldbHtmlEditor ol,div.htmldbHtmlEditor ol li{ list-style-type: decimal;font-size:inherit;}
+div.htmldbHtmlEditor ul,div.htmldbHtmlEditor ul li{ list-style-type: disc;font-size:inherit;}
