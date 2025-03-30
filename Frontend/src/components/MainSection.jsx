@@ -29,7 +29,7 @@ const MainSection = () => {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex absolute bottom-5 left-1/2 -translate-x-1/2 flex-row gap-9 items-center py-6">
-                    {["Itinerary", "Smart Suggest", "ExpenseLog"].map((text, index) => (
+                    {["Itinerary", "SmartSuggest", "ExpenseLog"].map((text, index) => (
                         <Link key={index} to={`/${text.toLowerCase()}`}>
                             <button className="w-52 px-6 py-3 bg-primary text-secondary font-semibold rounded-3xl shadow-lg hover:bg-secondary hover:opacity-75 hover:text-primary hover:border transition hover:-translate-y-2">
                                 {text.toUpperCase()}

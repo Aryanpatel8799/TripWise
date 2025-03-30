@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import SmartPackingForm from "../component/SmartPackingForm";
+import SmartSuggestForm from "../component/SmartSuggestForm";
 
 const SmartSuggest = () => {
   return (
@@ -9,24 +11,25 @@ const SmartSuggest = () => {
 
       {/* Destination Suggestion Button */}
       <div>
-        <button
-          className="bg-highlight rounded-3xl px-6 py-3 font-semibold text-primary text-lg shadow-md hover:bg-secondary hover:bg-opacity-50 hover:scale-105 transition"
-        >
-          FIND YOUR NEXT DESTINATION
-        </button>
+        <Link to="/smartsuggest/smartsuggestform">
+          <button className="bg-highlight rounded-3xl px-6 py-3 font-semibold text-primary text-lg shadow-md hover:bg-secondary hover:bg-opacity-50 hover:scale-105 transition">
+            FIND YOUR NEXT DESTINATION
+          </button>
+        </Link>
       </div>
 
       <p className="text-gray-700 max-w-2xl mx-auto mt-4">
-        Not sure where to go? Let SmartSuggest inspire you with AI-driven recommendations based on your preferences, ensuring a perfect getaway.
+        Not sure where to go? Let SmartSuggest inspire you with AI-driven
+        recommendations based on your preferences, ensuring a perfect getaway.
       </p>
 
       {/* Smart Packing Assistant Button */}
       <div>
-        <button
-          className="bg-highlight rounded-3xl px-6 py-3 font-semibold text-primary text-lg shadow-md hover:bg-secondary hover:bg-opacity-50 hover:scale-105 transition uppercase"
-        >
+        <Link to="/smartsuggest/smartpackingform">
+        <button className="bg-highlight rounded-3xl px-6 py-3 font-semibold text-primary text-lg shadow-md hover:bg-secondary hover:bg-opacity-50 hover:scale-105 transition uppercase">
           SMART PACKING ASSISTANT
         </button>
+        </Link>
       </div>
     </main>
   );
