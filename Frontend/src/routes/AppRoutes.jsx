@@ -10,11 +10,16 @@ import ItineraryForm from "../component/ItineraryForm";
 import SmartPackingForm from "../component/SmartPackingForm";
 import SmartSuggestForm from "../component/SmartSuggestForm";
 import ExpenseTracker from "../component/ExpenseTracker";
+import UserProtectedwrapper from "../components/UserProtectedwrapper";
 
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={
+        <UserProtectedwrapper>
+          <Home />
+        </UserProtectedwrapper>
+      } />
       <Route path="/itinerary" element={<Itinerary />} /> 
       <Route path="/itinerary/itineraryform" element={<ItineraryForm />} /> 
       <Route path="/smartsuggest" element={<SmartSuggest />} />
@@ -24,6 +29,11 @@ function AppRoutes() {
       <Route path="/expenselog/expensetracker" element={<ExpenseTracker />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/logout" element={
+        <UserProtectedwrapper>
+        <userLogout />
+        </UserProtectedwrapper>
+        } />
       <Route path="*" element={<h1>404 - Page Not Found</h1>} />
     </Routes>
   );

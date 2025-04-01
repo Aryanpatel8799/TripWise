@@ -1,12 +1,36 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import photo from "../assets/log ref1.jpg"
 import logo from "../assets/logo-final.png"; // Correct import
+import axios from "axios";
+import { UserDataContext } from "../context/userContext";
 
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(UserDataContext);
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3000/user/login", {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        setUser(response.data.user);
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
+  };
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -22,44 +46,32 @@ const Login = () => {
         </div>
 
         {/* Right Section (Form) */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="h-24 w-24 mb-4" />
-          </Link>
-          <h2 className="text-2xl font-semibold text-gray-800">Hello, Traveler!</h2>
-          <p className="text-gray-600 mb-4">Let's continue your journey with ease.</p>
+        <form onSubmit={handleSubmit} className="w-full">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
+              className="w-full p-3 mb-3 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Email Address"
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
+              className="w-full p-3 mb-3 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Password"
+            />
 
-          <input
-            type="email"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 mb-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-3 mb-3 border rounded bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-
-          <div className="flex justify-between w-full text-sm text-gray-600 mb-4">
-            <label className="flex items-center">
-              <input type="checkbox" className="mr-2" /> Remember Me
+            <label className="flex items-center text-sm text-gray-700 mb-4">
+              <input type="checkbox" className="mr-2" /> I agree to the
+              <a href="#" className="text-blue-500 ml-1">Terms & Conditions</a> and
+              <a href="#" className="text-blue-500 ml-1">Privacy Policy</a>
             </label>
-            <Link to="#" className="text-blue-500">Forgot Password?</Link>
-          </div>
 
-          <button className="w-full p-3 bg-blue-600 text-white rounded hover:bg-blue-700">
-            Login
-          </button>
-
-          <p className="mt-4 text-gray-600">
-            Don't have an account?{" "}
-            <Link to="/signup" className="text-blue-500">Sign Up</Link>
-          </p>
-        </div>
+            <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition">
+              Sign In
+            </button>
+          </form>
       </div>
     </div>
   );

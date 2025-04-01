@@ -2,16 +2,30 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo-final.png";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-
+import { useContext } from "react";
+import { UserDataContext } from "../context/userContext";
+import axios from "axios";
 const Header = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const handleMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden";
   };
+
+  const { user, setUser } = useContext(UserDataContext);
+
+  const handleLogout = async() => {
+    await axios.get('http://localhost:3000/user/logout',
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }
+    );
+    setUser(null);
+    localStorage.clear();
+  }
 
   return (
     <nav className="bg-primary p-3 px-6 w-full flex justify-between items-center relative">
@@ -37,12 +51,22 @@ const Header = () => {
           </Link>
         ))}
       </div>
-
+      
       {/* Login Button (Desktop) */}
-      <div className="hidden md:flex items-center gap-3 text-white bg-secondary px-4 py-2 rounded-full font-medium text-lg shadow-md transition hover:bg-highlight hover:bg-opacity-75 hover:text-secondary hover:shadow-lg">
-      <i class="fa-regular fa-user"></i>
-      <Link to="/login" className="">Login</Link>
-      </div>
+      {user ? (
+  <button
+    className="hidden md:flex items-center gap-3 text-white bg-red-500 px-4 py-2 rounded-full font-medium text-lg shadow-md transition hover:bg-red-600 hover:shadow-lg"
+    onClick={handleLogout}
+  >
+    <i className="fa-regular fa-sign-out"></i> Logout
+  </button>
+) : (
+  <div className="hidden md:flex items-center gap-3 text-white bg-secondary px-4 py-2 rounded-full font-medium text-lg shadow-md transition hover:bg-highlight hover:bg-opacity-75 hover:text-secondary hover:shadow-lg">
+    <i className="fa-regular fa-user"></i>
+    <Link to="/login">Login</Link>
+  </div>
+)}
+
 
       {/* Mobile Menu Toggle Button */}
       <button className="p-2 md:hidden" onClick={handleMenuToggle}>
