@@ -67,3 +67,49 @@ module.exports.logoutUser = async (req, res) => {
   await blacklistTokenDoc.save();
   res.status(200).json({ message: "Logout Successfully" });
 }
+module.exports.updateProfile = async (req,res) =>{
+  const errors = validationResult(req);
+  if(!errors.isEmpty())
+  {
+    return res.status(400).json({errors:errors.array()});
+  }
+  const {fullName,email,phone,profileImage} = req.body;
+  const user = await User.findByIdAndUpdate(req.user._id,{
+    fullName,
+    email,
+    phone,
+    profileImage
+  },{new:true});
+  res.status(200).json({user});
+}
+
+module.exports.uploadProfileImage = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    // Cloudinary upload is handled by multer-storage-cloudinary
+    const imageUrl = req.file.path;
+
+    // Update user profile with new image URL
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { profileImage: imageUrl },
+      { new: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      user,
+      message: 'Profile image updated successfully'
+    });
+  } catch (error) {
+    console.error('Profile image upload error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error uploading profile image',
+      error: error.message
+    });
+  }
+};

@@ -28,6 +28,12 @@ const userSchema = mongoose.Schema({
         minlength:[8,'Password must be at least 8 characters'],
         select:false
     },  
+    profileImage:{
+        type:String,
+    },
+    phone:{
+        type:String,
+    }
 })
 
 userSchema.methods.generateAuthToken = function(){
