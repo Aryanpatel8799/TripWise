@@ -42,7 +42,7 @@ const Header = () => {
 
   const handleLogout = async() => {
     try {
-      await axios.get('http://localhost:3000/user/logout', {
+      await axios.get('https://tripwise-gn79.onrender.com/user/logout', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

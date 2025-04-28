@@ -87,7 +87,7 @@ const Profile = () => {
       };
 
       const response = await axios.put(
-        'http://localhost:3000/user/updateProfile',
+        'https://tripwise-gn79.onrender.com/user/updateProfile',
         updateData,
         {
           headers: {

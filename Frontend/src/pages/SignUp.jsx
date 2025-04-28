@@ -27,7 +27,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:3000/user/register`, newUser);
+      const response = await axios.post(`https://tripwise-gn79.onrender.com/user/register`, newUser);
 
       if (response.status === 201) {
         setUser(response.data.user);

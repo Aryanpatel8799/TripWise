@@ -14,7 +14,7 @@ const UserProtectedWrapper = ({ children }) => {
       }
 
       try {
-        const response = await axios.get('http://localhost:3000/user/profile', {
+        const response = await axios.get('https://tripwise-gn79.onrender.com/user/profile', {
           headers: {
             Authorization: `Bearer ${token}`
           }
